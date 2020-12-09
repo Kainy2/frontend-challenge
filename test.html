@@ -1,0 +1,35 @@
+<!-- <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
+<!--
+NOTE :- Put above JQuery Library in starting of 'HEAD' tag.
+Designed by -> George Hastings.
+-->
+<div id="wrapper">
+  <div class="selectMenu">
+    <div class="front">
+      <span>Select</span>
+    </div>
+    <div class="back">
+      <ul>
+        <li>Option 1</li>
+        <li>Option 2</li>
+        <li>Option 3</li>
+        <li>Option 4</li>
+        <li>Option 5</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.ready(function () {
+    document.querySelector(".selectMenu").click(function () {
+      document.querySelector(this).toggleClass("flip");
+    });
+    document.querySelector(".back ul li").click(function () {
+      var option = document.querySelector(this).html();
+      document.querySelector(".front span").html(option);
+    });
+  });
+
+
+</script>

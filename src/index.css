@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* #wrapper { 
+  position: absolute; 
+  top: 45%; left: 50%;
+  transform:translate(-50%,-50%);
+}
+
+.selectMenu { 
+  position: relative; 
+  width: 200px ; 
+  font-family: sans-serif,helvetica; 
+  color: white; 
+  transform-style: preserve-3d; 
+  perspective: 1500
+}
+
+.selectMenu span { 
+  height: inherit;
+  margin-left: 20px; 
+  line-height: 60px;
+}
+
+.selectMenu .front,
+.selectMenu .back { 
+  -moz-transition: all 0.32s cubic-bezier(0.18, 0.89, 0.32, 1.2);
+  -webkit-transition: all 0.32s cubic-bezier(0.18, 0.89, 0.32, 1.2);
+  transition: all 0.32s cubic-bezier(0.18, 0.89, 0.32, 1.2);
+}
+
+.selectMenu .front {
+  margin-top: 30px;
+  width: 200px ; 
+  height: 60px; 
+  font-size: 19px; 
+  background-color: #325ec7; 
+  -moz-backface-visibility: hidden; 
+  -webkit-backface-visibility: hidden; 
+  backface-visibility: hidden; 
+  cursor: pointer;}
+
+.selectMenu .front:after { 
+  position: absolute;
+} */
