@@ -37,6 +37,18 @@ export class Finished extends Component {
             </svg>
           </div>
         )
+        
+        case '5':
+        return  (
+           <div>
+            <p><b>Equilateral Triangle Side:</b></p> <br />
+            <TextField label='Side' type='number' onChange={this.dimension} value={this.state.mainDimension} />
+            <br /><br /><br />
+        <svg height="210" width="500">
+        <polygon points="200,10 250,190 160,210" style="fill:lime;stroke:purple;stroke-width:1" />
+        </svg>
+            </div>
+      )
 
       case '3':
         return (
