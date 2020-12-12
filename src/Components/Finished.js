@@ -1,21 +1,28 @@
 import React, { Component } from 'react'
-import { TextField } from '@material-ui/core'
+import { Checkbox, TextField } from '@material-ui/core'
+import Checkboxes from "./Checkboxes"
 
 export class Finished extends Component {
   state = {
-    mainDimension: '200',
-    secDimension: '100',
+    mainDimension: 200,
+    secDimension: 120,
+    checked: false,
   }
 
   dimension = (e) => this.setState({ mainDimension: e.target.value })
   dimension2 = (e) => this.setState({ secDimension: e.target.value })
 
+  handleChange = (e) => this.setState({ checked: e.target.checked })
+
   render() {
+    const s = Number(this.state.mainDimension) + 10;
+    const x = Number(this.state.mainDimension / 2) + 10;
+    const y = Math.sqrt(3 * s * s / 4) + 10;
     switch (this.props.keys) {
+      //                                        CIRCLE
       case '1':
         return (
           <div>
-            <p><b>Radius:</b></p> <br />
             <TextField label='Radius' type='number' onChange={this.dimension} value={this.state.mainDimension} />
             <br /><br /><br />
 
@@ -25,6 +32,7 @@ export class Finished extends Component {
           </div>
         )
 
+      //                                        ELLIPSE
       case '2':
         return (
           <div>
@@ -37,23 +45,42 @@ export class Finished extends Component {
             </svg>
           </div>
         )
-        
-        case '5':
-        return  (
-           <div>
-            <p><b>Equilateral Triangle Side:</b></p> <br />
-            <TextField label='Side' type='number' onChange={this.dimension} value={this.state.mainDimension} />
-            <br /><br /><br />
-        <svg height="210" width="500">
-        <polygon points="200,10 250,190 160,210" style="fill:lime;stroke:purple;stroke-width:1" />
-        </svg>
-            </div>
-      )
 
+      //                                           TRIANGLE
       case '3':
         return (
           <div>
-            <TextField label='Length:' type='number' onChange={this.dimension} value={this.state.mainDimension} /> <br /><br/>
+            <TextField label='Side' type='number' onChange={this.dimension} value={this.state.mainDimension} />
+            <br /><br /><br />
+
+            <svg height={Number(y) + 10} width={Number(s) + 10}>
+              <polygon points={`
+              10,${y} 
+              ${x},10 
+              ${s},${y}
+              `} fill={this.props.color} stroke='gray' stroke-width="4" />
+            </svg>
+          </div>
+        )
+
+      //                                          SQUARE
+      case '4':
+        return (
+          <div>
+            <TextField label='Length:' type='number' onChange={this.dimension} value={this.state.mainDimension} />
+            <br /><br /><br />
+
+            <svg width={this.state.mainDimension} height={this.state.mainDimension}>
+              <rect width={this.state.mainDimension} height={this.state.mainDimension} stroke='gray' stroke-width="4" fill={this.props.color} />
+            </svg>
+          </div>
+        )
+
+      //                                         RECTANGLE
+      case '5':
+        return (
+          <div>
+            <TextField label='Length:' type='number' onChange={this.dimension} value={this.state.mainDimension} /> <br /><br />
             <TextField label='Width:' type='number' onChange={this.dimension2} value={this.state.secDimension} />
             <br /><br /><br />
 
@@ -63,17 +90,75 @@ export class Finished extends Component {
           </div>
         )
 
-      case '4':
+      //                                            PENTAGON
+      case '6':
         return (
           <div>
-            <TextField label='Length:' type='number' onChange={this.dimension} value={this.state.mainDimension} />
+            <TextField label='Side' type='number' onChange={this.dimension} value={this.state.mainDimension} />
             <br /><br /><br />
 
-            <svg width={this.state.mainDimension } height={this.state.mainDimension }>
-              <rect width={this.state.mainDimension} height={this.state.mainDimension} stroke='gray' stroke-width="4" fill={this.props.color} />
+            <svg height={y + s + 10} width={s + 10}>
+
+              <polygon points={`
+              10,${y + s - 10} 
+              10,${y} ${x},10 
+              ${s},${y} 
+              ${s},${y + s - 10}
+              `} fill={this.props.color} stroke='gray' stroke-width="4" />
             </svg>
           </div>
         )
+
+      //                                             HEXAGON
+      case '7':
+        //                    Default Orientation
+        if (this.state.checked === false) {
+
+          return (
+            <div>
+              <TextField label='Side' type='number' onChange={this.dimension} value={this.state.mainDimension} />
+              <br />
+              <Checkbox checked={this.state.checked} onChange={this.handleChange} />
+              <b>Rotate</b>
+              <br /><br />
+
+              <svg height={Number(2 * y) + 10} width={Number(2 * x + s) + 10} >
+                <polygon points={`
+                  10,${y} 
+                  ${x},10 
+                  ${x + s - 10},10 
+                  ${2 * x + s - 20},${y} 
+                  ${x + s - 10},${2 * y - 10} 
+                  ${x},${2 * y - 10}
+                  `} fill={this.props.color} stroke='gray' stroke-width="4" />
+              </svg>
+            </div>
+          )
+
+          //                    Rotated Orientation
+        } if (this.state.checked === true) {
+          return (
+            <div>
+              <TextField label='Side' type='number' onChange={this.dimension} value={this.state.mainDimension} />
+              <br />
+              <Checkbox checked={this.state.checked} onChange={this.handleChange} />
+              <b>Rotate</b>
+              <br /><br />
+
+              <svg height={Number(2 * x) + s} width={Number(2 * y) + 10}>
+                <polygon points={`
+                  ${y},10 
+                  ${2 * y}, ${x} 
+                  ${2 * y}, ${x + s - 10} 
+                  ${y},${2 * x + s - 20} 
+                  10,${x + s - 10} 
+                  10,${x} 
+                  `} fill={this.props.color} stroke='gray' stroke-width="4" />
+              </svg>
+            </div>
+          )
+          //  10,${y} ${x},10 ${x + s - 10},10 ${2 * x + s - 20},${y} ${x + s - 10},${2 * y - 10} ${x},${2 * y - 10}
+        }
 
       default:
         return <div></div>

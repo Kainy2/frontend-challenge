@@ -16,15 +16,18 @@ export class Selection extends Component {
       <div style={styles.div} >
 
         <TextField label='Shapes' style={styles.select} onChange={this.props.shapes} variant='outlined' select>
-          <MenuItem dense style={styles.MenuItem} > Select Shape </MenuItem>
+          <MenuItem style={styles.MenuItem} dense > Select Shape </MenuItem>
           <MenuItem style={styles.MenuItem} value='circle' > Circle </MenuItem>
           <MenuItem style={styles.MenuItem} value='ellipse'> Ellipse </MenuItem>
-          <MenuItem style={styles.MenuItem} value='rectangle'> Rectangle </MenuItem>
+          <MenuItem style={styles.MenuItem} value='triangle'> Triangle </MenuItem>
           <MenuItem style={styles.MenuItem} value='square'> Square </MenuItem>
+          <MenuItem style={styles.MenuItem} value='rectangle'> Rectangle </MenuItem>
+          <MenuItem style={styles.MenuItem} value='pentagon'> Pentagon (5) </MenuItem>
+          <MenuItem style={styles.MenuItem} value='hexagon'> Hexagon (6) </MenuItem>
         </TextField>
 
         <TextField label='Color' style={styles.select} onChange={this.props.colors} color='secondary' variant='outlined' select>
-          <MenuItem dense style={styles.MenuItem} value='white' > Select Color </MenuItem>
+          <MenuItem style={styles.MenuItem} dense value='white' > Select Color </MenuItem>
           <MenuItem style={styles.MenuItem} value= 'red' > Red </MenuItem>
           <MenuItem style={styles.MenuItem} value='orange'> Orange </MenuItem>
           <MenuItem style={styles.MenuItem} value='yellow'> Yellow </MenuItem>

@@ -8,29 +8,42 @@ export class Main extends Component {
     keys: '0',
     color: 'white',
   }
- 
+
   shapes = (e) => {
     if (e.target.value == 'circle') {
-      
       this.setState({ keys: '1' })
     }
+
     if (e.target.value == 'ellipse') {
-      
       this.setState({ keys: '2' })
     }
-    if (e.target.value == 'rectangle') {
-      
+    
+    if (e.target.value == 'triangle') {
       this.setState({ keys: '3' })
     }
+    
     if (e.target.value == 'square') {
-      
       this.setState({ keys: '4' })
     }
+    
+    if (e.target.value == 'rectangle') {
+      this.setState({ keys: '5' })
+    }
+
+    if (e.target.value == 'pentagon') {
+      this.setState({ keys: '6' })
+    }
+
+    if (e.target.value == 'hexagon') {
+      this.setState({ keys: '7' })
+    }
+
+
   }
 
   colors = (e) => this.setState({ color: e.target.value })
-  
-  render() {    
+
+  render() {
     console.log(this.state.color);
 
     return (
@@ -46,10 +59,10 @@ export class Main extends Component {
 const styles = {
   div: {
     textAlign: 'center'
-    
+
   },
   finished: {
-      marginTop: '10px',
+    marginTop: '10px',
     border: '2px solid black',
     // backgroundColor: 'blue'
   }
